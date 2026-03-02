@@ -1,0 +1,85 @@
+```markdown
+# Voice-to-Value Content Pipeline
+
+## Overview
+An AI-driven "Speech-to-Structure" workflow that transforms raw, multilingual voice dictations into polished, publication-ready English articles using OpenAI Whisper and Gemini 2.5 Flash.
+
+## Prerequisites
+* Python 3.8+
+* Gemini API Key
+* FFmpeg (Required by OpenAI Whisper for audio processing)
+
+## Installation
+
+1. **Setup Project Directory:**
+   ```bash
+   mkdir voice_to_value_pipeline
+   cd voice_to_value_pipeline
+
+```
+
+2. **Create and Activate Virtual Environment (Recommended):**
+```bash
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+
+```
+
+
+3. **Install Dependencies:**
+Ensure your `requirements.txt` includes the required version limit for numpy to prevent Whisper/PyTorch conflicts:
+```text
+streamlit
+google-genai
+python-dotenv
+openai-whisper
+numpy<2.0.0
+
+```
+
+
+```bash
+pip install -r requirements.txt
+
+```
+
+
+
+## Configuration
+
+Create a `.env` file in the root directory and add your Gemini API key:
+
+```env
+GEMINI_API_KEY=your_actual_api_key_here
+
+```
+
+## Running the Application
+
+Launch the Streamlit interface:
+
+```bash
+streamlit run app.py
+
+```
+
+*The application will open automatically in your browser at `http://localhost:8501`.*
+
+## Usage
+
+1. **Upload Media:** Drag and drop your raw dictation file (`.mp3`, `.mp4`, `.wav`, `.m4a`) into the upload zone.
+2. **Auto-Transcription:** Whisper will process the audio locally and display the raw, multilingual text.
+3. **Process:** Click **"Generate English Golden Source"** to trigger the LLM chain.
+4. **Review Outputs:**
+* **Golden Source (English):** The final, culturally neutral, CMS-ready draft.
+* **Generated Outline:** The structured, logical reorganization of the speaker's points.
+* **Intent Analysis:** The system's evaluation of the core thesis and source intent (technical vs. noise).
+
+
+
+```
+
+```
